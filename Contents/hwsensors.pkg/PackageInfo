@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<pkg-info overwrite-permissions="true" relocatable="false" identifier="org.kozlek.hwsensors" postinstall-action="none" version="1" format-version="2" generator-version="InstallCmds-403 (13E28)" install-location="/" auth="root">
+    <payload numberOfFiles="428" installKBytes="7892"/>
+    <bundle path="./System/Library/Extensions/FakeSMC.kext" id="org.netkas.driver.FakeSMC" CFBundleShortVersionString="6.14.1364" CFBundleVersion="1364"/>
+    <bundle path="./Applications/HWMonitor.app" id="org.hwsensors.HWMonitor" CFBundleShortVersionString="6.14.1364" CFBundleVersion="1364"/>
+
+    <bundle-version>
+        <bundle id="org.netkas.driver.FakeSMC"/>
+        <bundle id="org.hwsensors.HWMonitor"/>
+    </bundle-version>
+    <upgrade-bundle>
+        <bundle id="org.netkas.driver.FakeSMC"/>
+        <bundle id="org.hwsensors.HWMonitor"/>
+    </upgrade-bundle>
+
+    <update-bundle/>
+    <atomic-update-bundle/>
+    <scripts>
+        <preinstall file="./preinstall"/>
+    </scripts>
+</pkg-info>

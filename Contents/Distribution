@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<installer-gui-script minSpecVersion="1">
+    <title>hwsensors</title>
+    <pkg-ref id="org.kozlek.hwsensors">
+        <bundle-version>
+            <bundle CFBundleShortVersionString="6.14.1364" CFBundleVersion="1364" id="org.netkas.driver.FakeSMC" path="./System/Library/Extensions/FakeSMC.kext"/>
+            <bundle CFBundleShortVersionString="6.14.1364" CFBundleVersion="1364" id="org.hwsensors.HWMonitor" path="./Applications/HWMonitor.app"/>
+        </bundle-version>
+    </pkg-ref>
+    <options customize="never" allow-external-scripts="no"/>
+    
+    <domains enable_anywhere="true"/>
+    
+    <choices-outline>
+        <line choice="default">
+            <line choice="org.kozlek.hwsensors"/>
+        </line>
+    </choices-outline>
+    <choice id="default"/>
+    <choice id="org.kozlek.hwsensors" visible="false">
+        <pkg-ref id="org.kozlek.hwsensors"/>
+    </choice>
+    <pkg-ref id="org.kozlek.hwsensors" version="1" onConclusion="none" installKBytes="7892">#hwsensors.pkg</pkg-ref>
+</installer-gui-script>
