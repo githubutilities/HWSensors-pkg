@@ -25,26 +25,30 @@ echo "postinstall: Root of system folder... $4"
 
 date=`date -j +%F-%Hh%M`
 
+BACKUP_DIRECTORY="${3}"/Backup\ Extensions/org.kozlek.hwsensors/$DATE
+SYSTEM_EXTENSION_DIRECTORY="${3}"/System/Library/Extensions
+EXTRA_EXTENSION_DIRECTORY="${3}"/Extra/Extensions
+
 for i in FakeSMC; do
 
 	# clean `/System/Library/Extensions` folder
-	if [ -e "${3}"/System/Library/Extensions/$i.kext ]; then
-		if [ -n "${3}"/Backup\ Extensions/$date ]; then
+	if [ -e "${SYSTEM_EXTENSION_DIRECTORY}"/$i.kext ]; then
+		if [ -n "${BACKUP_DIRECTORY}" ]; then
 			echo "creating Backup Directory..."
-			mkdir -p "${3}"/Backup\ Extensions/$date
+			mkdir -p "${BACKUP_DIRECTORY}"
 		fi
-		cp -R "${3}"/System/Library/Extensions/$i.kext "${3}"/Backup\ Extensions/$date
-		rm -R "${3}"/System/Library/Extensions/$i.kext
+		cp -R "${SYSTEM_EXTENSION_DIRECTORY}"/$i.kext "${BACKUP_DIRECTORY}"
+		rm -R "${SYSTEM_EXTENSION_DIRECTORY}"/$i.kext
 	fi
 
 	# clean `/Extra/Extensions` folder
-	if [ -e "${3}"/Extra/Extensions/$i.kext ]; then
-		if [ -n "${3}"/Backup\ Extensions/$date ]; then
+	if [ -e "${EXTRA_EXTENSION_DIRECTORY}"/$i.kext ]; then
+		if [ -n "${BACKUP_DIRECTORY}" ]; then
 				echo "creating Backup Directory..."
-				mkdir -p "${3}"/Backup\ Extensions/$date
+				mkdir -p "${BACKUP_DIRECTORY}"
 		fi
-		cp -R "${3}"/Extra/Extensions/$i.kext "${3}"/Backup\ Extensions/$date
-		rm -R "${3}"/Extra/Extensions/$i.kext
+		cp -R "${EXTRA_EXTENSION_DIRECTORY}"/$i.kext "${BACKUP_DIRECTORY}"
+		rm -R "${EXTRA_EXTENSION_DIRECTORY}"/$i.kext
 	fi
 
 done
